@@ -5,14 +5,18 @@ interface IPayload {
   sub: string;
 }
 
-export function ensureAuthenticated(req: Request, res: Response, next: NextFunction) {
+export function ensureAuthenticated(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
   const authToken = req.headers.authorization;
 
   if (!authToken) {
     return res.status(401).json({ errorCode: 'token.invalid' });
   }
 
-  const [,token] = authToken.split(' ');  // Bearer <token>
+  const [, token] = authToken.split(' '); // Bearer <token>
 
   try {
     const { sub } = verify(token, process.env.JWT_SECRET) as IPayload;
