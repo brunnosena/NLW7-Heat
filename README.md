@@ -23,3 +23,12 @@ Project developed during the Next Level Week 7 - NLW Heat, provided by @Rocketse
 - [Sass](https://sass-lang.com/)
 - [SocketIO Client](https://socket.io/docs/v4/client-api/)
 - [Framer Motion](https://www.framer.com/motion/)
+
+<br/>
+
+## Mobile
+---
+### ✨ Tecnologias
+- [ReactNative](https://reactnative.dev/)
+- [Expo](https://expo.io/)
+- [Framer Motion](https://www.framer.com/motion/)
