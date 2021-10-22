@@ -3,6 +3,16 @@ import { sign } from 'jsonwebtoken';
 
 import prismaClient from '../prisma';
 
+/**
+ * Receber code(string)
+ * Recuperar o access_token no github
+ * Recuperar infos do user no github
+ * Verificar se o usuario existe no DB
+ * ---- SIM = Gera um token
+ * ---- NAO = Cria no DB, gera um token
+ * Retornar o token com as infos do user
+ */
+
 interface IAccessTokenResponse {
   access_token: string;
 }
@@ -40,6 +50,7 @@ class AuthenticateUserService {
     );
 
     const { login, id, avatar_url, name } = response.data;
+
     let user = await prismaClient.user.findFirst({
       where: {
         github_id: id,
@@ -61,8 +72,8 @@ class AuthenticateUserService {
       {
         user: {
           name: user.name,
-          avatar_url: user.avatar_url,
-          user: user.id,
+          avatar_ur: user.avatar_url,
+          id: user.id,
         },
       },
       process.env.JWT_SECRET,
